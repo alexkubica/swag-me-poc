@@ -1,18 +1,20 @@
 {
   "parser": "@typescript-eslint/parser",
-  "plugins": [
-    "@typescript-eslint"
-  ],
+  "plugins": ["@typescript-eslint"],
   "extends": [
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:@typescript-eslint/recommended-requiring-type-checking",
-    "plugin:node/recommended"
+    "plugin:node/recommended",
+    "prettier"
   ],
   "parserOptions": {
     "project": "./tsconfig.json"
   },
   "rules": {
+    "@typescript-eslint/no-unsafe-argument": "off",
+    "@typescript-eslint/unbound-method": "off",
+    "node/no-unsupported-features/es-syntax": "off",
     "@typescript-eslint/explicit-member-accessibility": "warn",
     "@typescript-eslint/no-misused-promises": 0,
     "@typescript-eslint/no-floating-promises": 0,
@@ -29,10 +31,6 @@
     "indent": ["warn", 2],
     "quotes": ["warn", "single"],
     "node/no-process-env": 1,
-    "node/no-unsupported-features/es-syntax": [
-      "error",
-      { "ignores" : ["modules"] }
-    ],
     "node/no-missing-import": 0,
     "node/no-unpublished-import": 0
   },

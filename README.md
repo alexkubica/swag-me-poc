@@ -1,12 +1,11 @@
 ## About
 
-POC to generate OpenAPI/Swagger document automatically from controller TypeScript annotations in express server.
+POC to generate OpenAPI/Swagger document automatically from TypeScript annotations in express server.
 
 Based on this Medium article:
 https://ahmedbejaoui.medium.com/implement-swagger-and-tsoa-to-an-existing-node-application-using-webpack-and-pm2-12512d32a504
 
 This project was created with [express-generator-typescript](https://github.com/seanpmaxwell/express-generator-typescript).
-
 
 ## Available Scripts
 
@@ -42,7 +41,6 @@ Run the production build (Must be built first).
 
 Run production build with a different env file.
 
-
 ## Additional Notes
 
-- If `npm run dev` gives you issues with bcrypt on MacOS you may need to run: `npm rebuild bcrypt --build-from-source`. 
+- If `npm run dev` gives you issues with bcrypt on MacOS you may need to run: `npm rebuild bcrypt --build-from-source`.
