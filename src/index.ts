@@ -1,12 +1,28 @@
-import './pre-start'; // Must be the first import
-import logger from 'jet-logger';
+import dotenv from 'dotenv';
+import express, { json, Request, Response, urlencoded } from "express";
+import swaggerUi from "swagger-ui-express";
+import { RegisterRoutes } from '../dist/routes';
+dotenv.config();
 
-import EnvVars from '@src/constants/EnvVars';
-import server from './server';
+const SERVER_PORT = process.env.PORT ?? 3000;
 
-// **** Run **** //
+const app = express();
 
-const SERVER_START_MSG =
-  'Express server started on port: ' + EnvVars.Port.toString();
+app.use(
+  urlencoded({
+    extended: true,
+  })
+);
+app.use(json());
 
-server.listen(EnvVars.Port, () => logger.info(SERVER_START_MSG));
+RegisterRoutes(app);
+
+app.use("/api-docs", swaggerUi.serve, async (_req: Request, res: Response) => {
+  return res.send(
+    swaggerUi.generateHTML(await import("../dist/swagger.json"))
+  );
+});
+
+app.listen(SERVER_PORT, () => {
+  console.log("Express server started on port: " + SERVER_PORT);
+});
